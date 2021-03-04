@@ -1,0 +1,183 @@
+
+tryCatch({
+    DBModelR::ModelDefinition(table="yui", fields=list(yui="INTEGER"))
+}, error=function(e) {
+    stop("Please, install DBModelR before you source this file.")
+})
+
+list(
+    adduct=DBModelR::ModelDefinition(
+        table="adduct",
+        fields=list(
+            name="TEXT",
+            mass="FLOAT",
+            charge="INTEGER",
+            multi="INTEGER",
+            formula_add="TEXT",
+            formula_ded="TEXT",
+            sign="TEXT",
+            oidscore="INTEGER",
+            quasi="INTEGER",
+            ips="FLOAT"
+        )
+    ),
+    cluster=DBModelR::ModelDefinition(
+        table="cluster",
+        fields=list(
+            clusterID="INTEGER",
+            formula="TEXT",
+            annotation="TEXT",
+            coeff="FLOAT",
+            r_squared="FLOAT",
+            charge="INTEGER",
+            mean_rt="FLOAT",
+            score="FLOAT",
+            deviation="FLOAT",
+            status="TEXT",
+            adduct="TEXT",
+            curent_group="INTEGER",
+            pc_group="INTEGER",
+            align_group="INTEGER",
+            xcms_group="INTEGER"
+        ),
+        one=list("sample", "compound")
+    ),
+    compound=DBModelR::ModelDefinition(
+        table="compound",
+        fields=list(
+            name="TEXT",
+            common_name="TEXT",
+            formula="TEXT",
+            charge="INTEGER",
+            date="TEXT",
+            mz="FLOAT"
+        )
+    ),
+    feature=DBModelR::ModelDefinition(
+        table="feature",
+        fields=list(
+            featureID="INTEGER",
+            mz="FLOAT",
+            mz_min="FLOAT",
+            mz_max="FLOAT",
+            rt="FLOAT",
+            rt_min="FLOAT",
+            rt_max="FLOAT",
+            int_o="FLOAT",
+            int_b="FLOAT",
+            max_o="FLOAT",
+            iso="TEXT",
+            abundance="FLOAT"
+        ),
+        one=list("cluster")
+    ),
+    instrument=DBModelR::ModelDefinition(
+        table="instrument",
+        fields=list(
+            model="TEXT",
+            manufacturer="TEXT",
+            analyzer="TEXT",
+            detector_type="TEXT",
+            ion_source="TEXT"
+        )
+    ),
+    instrument_config=DBModelR::ModelDefinition(
+        table="instrument_config",
+        fields=list(
+            resolution="TEXT",
+            agc_target="TEXT",
+            maximum_IT="TEXT",
+            number_of_scan_range="TEXT",
+            scan_range="TEXT",
+            version="TEXT"
+        )
+    ),
+    project=DBModelR::ModelDefinition(
+        table="project",
+        fields=list(
+            name="TEXT",
+            comment="TEXT"
+        ),
+        one=list("sample")
+    ),
+    sample=DBModelR::ModelDefinition(
+        table="sample",
+        fields=list(
+            name="TEXT",
+            path="TEXT",
+            polarity="TEXT",
+            kind="TEXT", ## rdata or mxml or enriched_rdata
+            raw="BLOB"
+        ),
+        one=list(
+            "peak_picking_parameters",
+            "pairing_parameters",
+            "alignmenmt_parameters",
+            "camera_parameters",
+            "instrument",
+            "instrument_config",
+            "software",
+            "smol_xcms_set"
+        )
+    ),
+    smol_xcms_set=DBModelR::ModelDefinition(
+        table="smol_xcms_set",
+        fields=list(
+            raw="BLOB"
+        )
+    ),
+    software=DBModelR::ModelDefinition(
+        table="software",
+        fields=list(
+            name="TEXT",
+            version="TEXT"
+        )
+    ),
+    # camera_parameters=DBModelR::ModelDefinition(
+    #     table="camera_parameters",
+    #     fields=list()
+    # ),
+    # pairing_parameters=DBModelR::ModelDefinition(
+    #     table="pairing_parameters",
+    #     fields=list()
+    # ),
+    peak_picking_parameters=DBModelR::ModelDefinition(
+        table="peak_picking_parameters",
+        fields=list(
+            ppm="FLOAT",
+            peakwidth="TEXT",
+            snthresh="TEXT",
+            prefilterStep="TEXT",
+            prefilterLevel="TEXT",
+            mzdiff="TEXT",
+            fitgauss="TEXT",
+            noise="TEXT",
+            mzCenterFun="TEXT",
+            integrate="INTEGER",
+            firstBaselineCheck="TEXT",
+            snthreshIsoROIs="TEXT",
+            maxCharge="INTEGER",
+            maxIso="INTEGER",
+            mzIntervalExtension="TEXT"
+        )
+    ),
+    alignmenmt_parameters=DBModelR::ModelDefinition(
+        table="alignmenmt_parameters",
+        fields=list(
+            binSize="TEXT",
+            centerSample="TEXT",
+            response="TEXT",
+            distFun="TEXT",
+            gapInit="TEXT",
+            gapExtend="TEXT",
+            factorDiag="TEXT",
+            factorGap="TEXT",
+            localAlignment="INTEGER",
+            initPenalty="TEXT",
+            bw="TEXT",
+            minFraction="TEXT",
+            minSamples="TEXT",
+            maxFeatures="TEXT"
+        )
+    )
+)
