@@ -1,0 +1,219 @@
+CHANGES IN VERSION 1.45.2
+-------------------------
+
+BUG FIXES
+
+    o Thanks to Sebastien Hutinet @shutinet for fixing the adduct mass of CF3COOH. 
+      Includes a corresponding change in unit tests. Closes #61 
+
+CHANGES IN VERSION 1.43.2
+-------------------------
+
+BUG FIXES
+
+    o Change several && causing failure
+      with _R_CHECK_LENGTH_1_CONDITION_ and _R_CHECK_LENGTH_1_CONDITION_
+
+CHANGES IN VERSION 1.43.1
+-------------------------
+
+BUG FIXES
+
+    o Improve vignette layout and fix typos, thanks to Anton Nikolas Waniek
+
+CHANGES IN VERSION 1.41.1
+-------------------------
+
+NEW FEATURES:
+
+    o allow findAdducts alternative intval (thanks to Sunil Dhakad)
+
+CHANGES IN VERSION 1.39.2
+-------------------------
+
+BUG FIXES
+
+    o Fix duplicate vignette name
+
+CHANGES IN VERSION 1.33.3
+-------------------------
+
+BUG FIXES
+
+    o Fix getPeaklist not pulling rownames correctly, closing #22, thanks to Jan Stanstrup
+
+CHANGES IN VERSION 1.33.2
+-------------------------
+
+BUG FIXES
+
+    o Fix getPeaklist, updated getReducedPeaklist(), Thanks to Kristian Peters
+
+CHANGES IN VERSION 1.33.1
+-------------------------
+
+NEW FEATURES:
+
+    o allow matchedfilter alternative intval in getPeaklist (J. Stanstrup)
+    o pass intval from Groupcorr to calcCaS (J. Stanstrup)
+    o getReducedPeaklist returns just one intensity per pspec (K. Peters) 
+
+CHANGES IN VERSION 1.29.2
+-------------------------
+
+BUG FIXES
+
+    o Fix build issues and Vignette encoding (again)
+
+CHANGES IN VERSION 1.29.2
+-------------------------
+
+BUG FIXES
+
+    o Fix build issues and Vignette encoding
+
+CHANGES IN VERSION 1.29.1
+-------------------------
+
+NEW FEATURES:
+
+    o Added function findIsotopesWithValidation 
+
+CHANGES IN VERSION 1.27.2
+-------------------------
+BUG FIXES
+
+    o Fix imports in DESCRIPTION to avoid igraph overwriting xcms::group()
+
+CHANGES IN VERSION 1.25.3
+-------------------------
+BUG FIXES
+
+    o Disabled Rmpi support and usage in the unit tests, 
+      which lead to timeouts on BioC build farm
+
+CHANGES IN VERSION 1.25.3
+-------------------------
+BUG FIXES
+
+    o Fix parallel processing with SNOW
+
+CHANGES IN VERSION 1.25.2
+-------------------------
+
+USER VISIBLE CHANGES:
++ Disabled Rmpi support and usage on Windows
+
+CHANGES IN VERSION 1.25.1
+-------------------------
+
+BUG FIXES
+
+    o Fix the import of the igraph methods, because it also exported a groups function. Solves the error "Error in x$membership : $ operator not defined for this S4 class"
+
+
+CHANGES IN VERSION 1.23.2
+-------------------------
+
+BUG FIXES
+
+    o Fix bug in generateRules() if no ions matching the polarity are provided explicitly
+
+CHANGES IN VERSION 1.23.1
+-------------------------
+
+BUG FIXES
+
+    o Fix bug in generateRules() with empty neutraladditions
+
+CHANGES IN VERSION 1.20.1
+-------------------------
+
+NEW FEATURES
+
+    o Added possibility to pass cor_exp_th from annotateDiffreport to groupCorr()
+
+CHANGES IN VERSION 1.20.0
+-------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o Version bump for BioC release
+
+CHANGES IN VERSION 1.19.1
+-------------------------
+
+BUG FIXES
+
+    o Fixed bug in the generateRules function, where in the negative mode
+      rules with polycharged positve ions are not created
+
+CHANGES IN VERSION 1.15.5
+-------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+
+    o MPI Version of findAdducts() should now consume a lot less memory then before
+
+CHANGES IN VERSION 1.15.4
+-------------------------
+
+NEW FEATURES
+
+    o findKendrickMass() now allows negative retention time windows,
+      essentially allowing homologous series of losses
+
+CHANGES IN VERSION 1.15.1
+--------------------------
+
+BUG FIXES
+  
+    o Fix in findIsotopes, where sometime peak with huge m/z differences where annotated as isotopes
+
+CHANGES IN VERSION 1.13.9
+-------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+
+    o findNeutralLossSpecs and findNeutral now accepts multiple masses and use correctly the ppm error
+
+BUG FIXES
+
+    o Memory fix in groupCorr if all peaks are contained in one group.
+
+CHANGES IN VERSION 1.13.8
+-------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+  
+    o Add igraph package to the dependencies
+
+BUG FIXES
+
+    o Fix for groupCorr with graphMethod="lpc", with a igraph library > 0.6
+
+CHANGES IN VERSION 1.13.7
+-------------------------
+
+BUG FIXES
+
+    o Fixed problem in findIsotopes with a previous grouped single sample xcmsSet
+
+CHANGES IN VERSION 1.13.6
+-------------------------
+
+BUG FIXES
+
+    o  Fixed problem in findAdducts where higher nM+x annotations were erroneous deleted
+    o Fixed problem in combinexsAnnos, which produces a "subscript out of bounds " error
+
+CHANGES IN VERSION 1.13.5
+-------------------------
+
+BUG FIXES
+
+    o Fixed problem "Error in data.frame(...)" in findAdducts when using polarity = negative
+

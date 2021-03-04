@@ -1,0 +1,62 @@
+useDynLib(CAMERA)
+
+import("methods")
+import(xcms, except=c(plot))
+
+importFrom("RBGL", "highlyConnSG")
+importFrom("graph", "ftM2graphNEL")
+importFrom("Hmisc", "rcorr")
+importMethodsFrom("graph", "addNode", "nodes")
+importFrom("graphics", "legend", "plot", "points", "strheight", "text")
+importFrom("grDevices", "rgb")
+importFrom("stats", "cor.test")
+importFrom("utils", "flush.console", "object.size", "read.table")
+importFrom("igraph", "graph.data.frame", "label.propagation.community")
+
+
+importClassesFrom(Biobase, "Versioned")
+importFrom(Biobase, validMsg)
+
+export("annotate",
+       "annotateDiffreport",
+       "cleanParallel",
+       "combinexsAnnos",
+       "getIsotopeCluster",
+       "getpspectra",
+       "findKendrickMasses",
+       "findNeutralLoss", 
+       "findNeutralLossSpecs",
+       "pspec2metfrag",
+       "pspec2metfusion",
+       "xsAnnotate", 
+       "compoundQuantiles",
+       "compoundLibraries", 
+       "massWindowSizes")
+
+exportClasses("xsAnnotate")
+exportClasses("compoundQuantiles")
+exportMethods("groupFWHM")
+exportMethods("findIsotopes", "findIsotopesWithValidation")
+exportMethods("getAtomCount", "getIsotopeProportion")
+exportMethods("groupCorr")
+exportMethods("groupDen")
+exportMethods("findAdducts")
+exportMethods("show")
+exportMethods("plotEICs")
+exportMethods("plotPsSpectrum")
+exportMethods("getPeaklist")
+exportMethods("getReducedPeaklist")
+exportMethods("getAllPeakEICs")
+exportMethods("calcPC",
+	      "calcPC.lpc",
+	      "calcPC.hcs")
+exportMethods("calcCiS",
+	      "calcCaS",
+	      "calcIsotopes")
+
+exportClasses("ruleSet")
+exportMethods("setDefaultLists",
+              "readLists",
+              "setDefaultParams",
+              "setParams",
+              "generateRules")
